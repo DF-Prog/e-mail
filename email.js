@@ -12,13 +12,11 @@ uso:
   onblur="valEmail(this)" onkeyup="corEmail(this);"/>
 */
 
-let valido = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
-
 function valEmail(obj){
   if(obj.value == '')
     return false
-  if(!valido.test(obj.value)){
-    alert('E-mail inválido');
+  if(!validarEmail(obj.value)){
+    alert('E-mail "'+obj.value+'" inválido,\nverifique e tente novamente.');
     obj.value = "";
   }
 }
@@ -26,8 +24,10 @@ function valEmail(obj){
 function corEmail(obj){
   if(obj.value == '')
     return false
-  if(!valido.test(obj.value))
-    obj.style.color = 'red' // e-mail invalido
-  else
-    obj.style.color = null
+  obj.style.color = (!validarEmail(obj.value)) ? 'red' : null // e-mail invalido
+}
+
+function validarEmail(email){
+  let necessario = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/
+  return necessario.test(email)
 }
