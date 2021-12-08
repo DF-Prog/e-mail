@@ -1,2 +1,2 @@
 # e-mail
-Validação de endereço de e-mail
+Validação de e-mail
